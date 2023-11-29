@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+docker compose \
+    --file ./docker/docker-compose.yml \
+    --progress quiet \
+    build

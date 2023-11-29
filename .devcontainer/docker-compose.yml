@@ -1,0 +1,7 @@
+version: '3.8'
+name: lunar
+services:
+  vsc-devcontainer:
+    image: lunar:php8.2
+    volumes:
+      - ../.:/home/lunar/src

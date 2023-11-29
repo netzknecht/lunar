@@ -1,0 +1,20 @@
+{
+    "name": "Lunar",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "vsc-devcontainer",
+    "remoteUser": "lunar",
+    "workspaceFolder": "/home/lunar/src",
+    "initializeCommand": "./docker/build",
+    "postCreateCommand": "git fetch --all --quiet && composer --quiet update",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "DEVSENSE.phptools-vscode",
+                "DEVSENSE.composer-php-vscode",
+                "xdebug.php-debug",
+                "mhutchie.git-graph"
+            ],
+            "settings": {}
+        }
+    }
+}

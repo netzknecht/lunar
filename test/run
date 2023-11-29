@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+export PHP_UNIT_ARGS=$@
+./docker/build
+dc() {
+    docker compose \
+        --file ./test/docker-compose.yml \
+        --progress quiet \
+        $@
+}
+dc up && dc down --volumes

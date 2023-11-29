@@ -25,6 +25,21 @@ This repository serves as a monorepo for the main packages that make up Lunar.
 - [Join our discord server](https://discord.gg/v6qVWaf) and chat to the developers and people using Lunar.
 - [We have a roadmap](https://github.com/orgs/lunarphp/projects/1) where we will be detailing which features are next.
 
+## Development, debugging and (local) testing 
+
+### VSC devcontainer
+A Docker based VSC devcontainer is available for development, debugging and simple testing. 
+- PHP version (8.1/8.2) has to be selected inside `./.devcontainer/docker-compose.yml` file with the image tag (`lunar:php8.1` or `lunar:php8.2`) before vsc conncts to the devcontainer (rebuild is required).
+- Lunar version (branch) must be selected using `git checkout`.
+- Laravel version (9/10) must be changed via composer e.G. `laravel/framework:^9` or `laravel/framework:^10` (inside the running devcontainer).
+
+### Multi environment testing
+Run all or spcific (--filter=*) tests with `./test/run` in Docker environments that meet the system requirements. The tests are executed parallel in separate containers and use [ParaTest](https://github.com/paratestphp/paratest) to run in parallel within the containers. If needed, you can use most of the command line options from [ParaTest](https://github.com/paratestphp/paratest) with `./test/run`, too.
+- PHP 8.1 + Laravel 9
+- PHP 8.1 + Laravel 10
+- PHP 8.2 + Laravel 9
+- PHP 8.2 + Laravel 10
+
 ## Packages in this monorepo
 
 ### Admin hub

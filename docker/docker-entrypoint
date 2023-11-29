@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+if [ "$1" == "test" ]; then
+    cp -au /home/lunar/src /home/lunar/test && cd /home/lunar/test
+    echo "Run test(s) from branch: $(git branch --show-current)"
+    if [ "$PHP_UNIT_ARGS" != "" ]; then echo "Use arguments: $PHP_UNIT_ARGS"; fi
+    rm -f ./composer.lock && composer --quiet --no-interaction \
+      require --no-progress --with-all-dependencies \
+        laravel/framework:$LARAVEL_VERSION \
+        brianium/paratest
+    echo -n "Use PHP $PHP_VERSION and Laravel "
+    echo $(composer show | sed -En "s/laravel\/framework\s+v([0-9\.]+).*/\1/p")
+    php -d memory_limit=-1 ./vendor/bin/paratest --functional --colors=always $PHP_UNIT_ARGS
+else
+  while true
+  do
+    tail -f /dev/null & wait ${!}
+  done
+fi

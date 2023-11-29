@@ -1,0 +1,13 @@
+version: '3.8'
+name: lunar
+services:
+  build-php8.1:
+    image: lunar:php8.1
+    build: 
+      args:
+        PHP_VERSION: 8.1
+  build-php8.2:
+    image: lunar:php8.2
+    build: 
+      args:
+        PHP_VERSION: 8.2
